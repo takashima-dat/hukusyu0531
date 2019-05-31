@@ -30,19 +30,19 @@ namespace hukusyu0531
             label1.Left += vx;
             label1.Top += vy;
 
-            if(label1.Left < 0)
+            if(label1.Left <= 0)
             {
                 vx = -vx;
             }
-            if (label1.Top < 0)
+            if (label1.Top <= 0)
             {
                 vy = -vy;
             }
-            if (label1.Left > (Width))
+            if (label1.Left >= (Width)-50)
             {
                 vx = -vx;
             }
-            if (label1.Top > (Height))
+            if (label1.Top >= (Height)-50)
             {
                 vy = -vy;
             }
