@@ -12,8 +12,8 @@ namespace hukusyu0531
 {
     public partial class Form1 : Form
     {
-        int vx = -10;
-        int vy = -10;
+        int vx;
+        int vy;
         int lcr = 255, lcg = 0, lcb = 0;//label1の文字の色、RGB
         int vlcc = 5;//色を変える速度　1か5か255のみ
         int score = 0;
@@ -22,6 +22,36 @@ namespace hukusyu0531
         {
             InitializeComponent();
             //Form1.DefaultBackColor=Color.FromArgb(100,100,100);
+            Random rx = new Random();
+            label1.Left = rx.Next(0,ClientSize.Width);
+            Random ry = new Random();
+            label1.Left = ry.Next(0, ClientSize.Height);
+
+            //↑label1のスタート位置がForm1のサイズの中でランダム
+            //↓label1のスタート向きが４方向の中でランダム
+
+            Random ho = new Random();
+            int hou = ho.Next(1, 4);
+
+            switch(hou)
+            {
+                case 1:
+                    vx = -10;
+                    vy = -10;
+                    break;
+                case 2:
+                    vx = 10;
+                    vy = -10;
+                    break;
+                case 3:
+                    vx = -10;
+                    vy = 10;
+                    break;
+                case 4:
+                    vx = 10;
+                    vy = 10;
+                    break;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -61,7 +91,7 @@ namespace hukusyu0531
             }
 
             //label1の動きの向きになる矢印
-            if (vx<0&&vy<0)
+            if (vx < 0 && vy < 0)
             {
                 label1.Text = ("↖");
             }
